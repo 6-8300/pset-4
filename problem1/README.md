@@ -21,7 +21,6 @@ Using your knowledge from the paper, do the following:
   - Implement derivative-calculating functions (`problem_1_gradient.py`)
   - Implement a flexible MLP/SIREN training loop (`problem_1_train.py`)
 - Run the notebook `benchmark.ipynb` to check your functions and visualize the training process
-- Answer the following questions
 
 ### Short-answer questions
 
@@ -38,10 +37,10 @@ While the reconstruction from our SIREN looks a lot better than the MLP's, it's 
 
 Include plots and analyses for the following investigations in `problem_1.pdf`:
 
-- Benchmark at least 5 additional SIREN/MLP models by varying multiple hyperparameters. Plot the results of these benchmarks and include in the writeup.
+- Benchmark at least 10 additional SIREN/MLP models by varying multiple hyperparameters (e.g., activation functions, model hyperparameters, training parameters). Plot the results of these benchmarks and include in the writeup.
 - Optimize the hyperparameters in the SIREN model to achieve the highest PSNR you can on the `astronaut` image. Include the optimal hyperparameters in your writeup.
 
-**For extra credit:** implement another (nontrivial) model from the literature and add it to your benchmarks!
+**For extra credit:** implement another (nontrivial) model from the literature and add it to your benchmarks! If you do this, please describe the model you implemented in your writeup.
 
 
 ## Submission Instructions
