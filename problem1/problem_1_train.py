@@ -1,3 +1,7 @@
+"""
+Implement a training loop for the MLP and SIREN models.
+"""
+
 import torch
 from torch.utils.data import DataLoader
 

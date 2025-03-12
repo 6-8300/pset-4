@@ -1,14 +1,22 @@
+"""
+Implement a neural field using a simple MLP.
+
+The MLP maps from `in_features`-dimensional points (e.g., 2D xy positions) 
+to `out_features`-dimensional points (e.g., 1D color values). To make your
+implementation more general, also let the user specify any activation function.
+"""
+
 import torch.nn as nn
 
 class MLP(nn.Module):
     def __init__(
         self,
-        in_features: int,
-        out_features: int,
-        hidden_features: int,
-        hidden_layers: int,
-        bias: bool = True,
-        activation: str = "ReLU",  # ReLU, Tanh, GELU, etc
+        in_features: int,  # Number of input features
+        out_features: int,  # Number of output features
+        hidden_features: int,  # Number of features in the hidden layers
+        hidden_layers: int,  # Number of hidden layers in the MLP
+        bias: bool = True,  # Whether to include a bias term in the linear layers
+        activation: str = "ReLU",  # E.g., "ReLU", "Tanh", "GELU", etc.
     ):
         super().__init__()
         self.in_features = in_features

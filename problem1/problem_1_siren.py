@@ -1,5 +1,10 @@
-from math import sqrt
+"""
+Implement a neural field using a SIREN.
 
+The SIREN maps from `in_features`-dimensional points (e.g., 2D xy positions) 
+to `out_features`-dimensional points (e.g., 1D color values). Pay special
+attention to the paper linked in the README when implementing this model.
+"""
 import torch
 import torch.nn as nn
 
@@ -10,16 +15,16 @@ class SineLayer(nn.Module):
         in_features: int,
         out_features: int,
         bias: bool,
-        is_first: bool,
+        is_first_layer: bool,
         omega_0: float,
     ):
         super().__init__()
         self.omega_0 = omega_0
         self.linear = nn.Linear(in_features, out_features, bias=bias)
-        self.init_weights(is_first, in_features)
+        self.init_weights(is_first_layer, in_features)
 
     @torch.no_grad()
-    def init_weights(self, is_first, in_features):
+    def init_weights(self, is_first_layer, in_features):
         """
         Initialize the weights of the layer according to the scheme
         described in the SIREN paper.
@@ -33,13 +38,13 @@ class SineLayer(nn.Module):
 class SIREN(nn.Module):
     def __init__(
         self,
-        in_features: int,
-        out_features: int,
-        hidden_features: int,
-        hidden_layers: int,
-        bias: bool = True,
-        last_layer_linear: bool = False,
-        first_omega_0: float = 20.0,
+        in_features: int,  # Number of input features
+        out_features: int,  # Number of output features
+        hidden_features: int,  # Number of features in the hidden layers
+        hidden_layers: int,  # Number of hidden layers
+        bias: bool = True,  # Whether to include a bias term in the linear layers
+        last_layer_linear: bool = False,  # Whether to use a linear layer for the last layer
+        first_omega_0: float = 20.0,  # omega_0 for the first layer
         hidden_omega_0: float = 20.0,
     ):
         super().__init__()
